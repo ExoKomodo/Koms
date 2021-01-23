@@ -27,4 +27,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:                                         
           name: Koms application   
-          path: bin/${{matrix.os}}
+          path: bin
