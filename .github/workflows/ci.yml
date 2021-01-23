@@ -18,8 +18,12 @@ jobs:
           nim-version: 'stable'
       - run: nimble check -Y
       - name: "Build koms binary"
-        run: nimble build -Y
+        run: |
+          cd komslib
+          nimble develop
+          cd ..
+          nimble build -Y
       - uses: actions/upload-artifact@v2
         with:                                         
-          name: Koms application           
+          name: Koms application   
           path: bin/koms
