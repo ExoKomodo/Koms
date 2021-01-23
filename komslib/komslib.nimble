@@ -2,14 +2,11 @@
 
 version       = "0.1.0"
 author        = "James Orson"
-description   = "TCP messaging client"
+description   = "Koms messaging librar"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["koms"]
-binDir        = "bin"
 
 
 # Dependencies
 
 requires "nim >= 1.4.2"
-requires "komslib"
