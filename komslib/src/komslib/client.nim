@@ -15,7 +15,7 @@ type
 
 proc new_client*(
   server_address: string;
-  port: Port | int = 7687;
+  port: Port | uint16 = 7687;
   socket: AsyncSocket = newAsyncSocket();
   id: int = -1;
 ): Client = Client(
