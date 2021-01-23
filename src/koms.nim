@@ -9,9 +9,14 @@ import komslib
 type
   Args = tuple
     address: string
+    username: string
     is_server: bool
   
-func is_valid(self: Args): bool = self.address != ""
+func is_valid(self: Args): bool =
+  if not self.is_server:
+    self.address != ""
+  else:
+    true
 
 proc parse_args: Args =
   if paramCount() == 0:
@@ -24,6 +29,8 @@ proc parse_args: Args =
       case parser.key
         of "address":
           result.address = parser.val.string
+        of "username":
+          result.username = parser.val.string
         of "server":
           result.is_server = true
     of cmdEnd:
@@ -45,6 +52,7 @@ when isMainModule:
     wait_for server.run()
   else:
     let client = new_client(
+      args.username,
       args.address,
     )
     wait_for client.run()
