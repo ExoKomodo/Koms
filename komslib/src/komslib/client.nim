@@ -1,5 +1,8 @@
+from sugar import `=>`
+
 import asyncdispatch
 import asyncnet
+import std/exitprocs
 import strformat
 import threadpool
 
@@ -70,6 +73,8 @@ proc send*(self: Client; message: Message) {.async.} =
   await self.socket.send(message.stringify())
 
 proc run*(self: Client) {.async.} =
+  add_exit_proc(() => self.close())
+  set_control_c_hook(() {.noconv.} => quit())
   asyncCheck self.connect()
   var message_flow = spawn stdin.readLine()
   

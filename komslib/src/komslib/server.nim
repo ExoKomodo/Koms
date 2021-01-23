@@ -3,9 +3,9 @@ from sugar import `=>`
 
 import asyncdispatch
 import asyncnet
-import std/exitprocs
 import locks
 import sequtils
+import std/exitprocs
 import strformat
 
 import ./client
